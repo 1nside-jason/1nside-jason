@@ -1,0 +1,17 @@
+name: WakaTime Readme
+
+on:
+  schedule:
+    # 每天凌晨 0 点自动更新数据
+    - cron: '0 0 * * *'
+  # 允许我们手动点击运行
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    name: Update Readme with WakaTime Stats
+    runs-on: ubuntu-latest
+    steps:
+      - uses: athul/waka-readme@master
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
